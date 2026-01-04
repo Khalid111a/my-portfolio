@@ -94,8 +94,8 @@ function Contact() {
       </form>
 
       {/* 🔹 Footer */}
-      <p className="mt-10 text-gray-500 text-sm">
-        © {new Date().getFullYear()} Khaled Mohammed — All Rights Reserved.
+      <p className="mt-15 text-gray-500 text-sm">
+        © {new Date().getFullYear()} Khaled AlKamel — All Rights Reserved.
       </p>
     </section>
   );

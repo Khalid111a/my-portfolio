@@ -2,31 +2,44 @@ function Hero() {
   return (
     <section
       id="home"
-      className="flex flex-col justify-center items-center text-center min-h-screen bg-gray-950 text-white px-6"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-6 bg-gray-950 text-white pt-24"
     >
-      <h1 className="text-5xl md:text-6xl font-bold mb-4 text-indigo-400">
-        Hi, I'm Khaled 👋
+      <h1 className="text-5xl md:text-6xl font-extrabold text-indigo-400">
+        Hi, I&apos;m Khaled AlKamel <span className="inline-block">👋</span>
       </h1>
 
-      <p className="text-lg text-gray-400 max-w-2xl leading-relaxed">
-        Full Stack Developer & Graphic Designer — I build fast, scalable web apps and craft stunning visual designs that help businesses stand out.
+      <p className="mt-4 text-lg text-gray-300 font-medium">
+        Full-Stack Developer & Graphic Designer
+      </p>
+
+      <p className="mt-3 max-w-2xl text-gray-400 leading-relaxed">
+        I build fast, scalable web apps and modern digital designs that help
+        businesses stand out.
       </p>
 
       <div className="mt-8 flex gap-4">
         <a
           href="#projects"
-          className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium shadow-md transition-all duration-200"
+          className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold transition"
         >
           View My Work
         </a>
 
         <a
           href="#contact"
-          className="border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white px-6 py-3 rounded-lg font-medium transition-all duration-200"
+          className="border border-indigo-400 text-indigo-300 hover:bg-indigo-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition"
         >
-          Contact Me    
+          Contact Me
         </a>
       </div>
+
+      <p className="mt-8 text-sm text-gray-500">
+        Trusted by startups • Open for freelance & full-time opportunities
+      </p>
+
+      <a href="#about" className="mt-10 text-gray-500 hover:text-gray-300 transition">
+        ↓ Scroll to explore
+      </a>
     </section>
   );
 }
