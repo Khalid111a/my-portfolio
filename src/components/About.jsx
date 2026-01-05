@@ -2,7 +2,7 @@ function About() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 bg-gray-900 text-gray-300 py-20 px-6 md:px-16 flex flex-col items-center text-center"
+      className="scroll-mt-28 bg-gray-900 text-gray-300 py-20 px-6 md:px-16 flex flex-col items-center text-center"
     >
       <h2 className="text-4xl font-bold text-indigo-400 mb-8">
         About Me

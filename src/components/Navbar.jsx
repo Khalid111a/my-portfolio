@@ -8,8 +8,8 @@ function Navbar() {
       <ul className="flex gap-8 text-sm font-medium">
         <li><a href="#home" className="hover:text-indigo-400 transition-colors">Home</a></li>
         <li><a href="#about" className="hover:text-indigo-400 transition-colors">About</a></li>
-        <li><a href="#designs" className="hover:text-indigo-400 transition-colors">Designs</a></li>
         <li><a href="#projects" className="hover:text-indigo-400 transition-colors">Projects</a></li>
+        <li><a href="#designs" className="hover:text-indigo-400 transition-colors">Designs</a></li>
         <li><a href="#contact" className="hover:text-indigo-400 transition-colors">Contact</a></li>
       </ul>
     </nav>

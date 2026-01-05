@@ -1,4 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
+import myporto from "../assets/projects/myporto.png";
+import myporto2 from "../assets/projects/myporto2.png";
+import myporto3 from "../assets/projects/myporto3.png";
 
 // ✅ 1) change this
 const GITHUB_USERNAME = "Khalid111a";
@@ -6,30 +9,21 @@ const GITHUB_USERNAME = "Khalid111a";
 // ✅ 2) (optional) add images for some repos only
 // repo name must match GitHub repo "name"
 const projectImages = {
-  "oi-chart-bot": [
-    // put your local images here later (optional)
-    // example:
-    // require("../assets/projects/oi1.png"),
-    // require("../assets/projects/oi2.png"),
-  ],
+  "my-portfolio": [myporto, myporto2, myporto3],
   "dotcore-chat": [],
   "echo-contact-relay": [],
 };
 
-
-const EXCLUDED_REPOS = [
-  "practice",
-  "platformiq",        
-  "french-transitions-qa" 
-];
-
+const EXCLUDED_REPOS = ["practice", "platformiq", "french-transitions-qa"];
 
 function Slider({ images, title }) {
   const [index, setIndex] = useState(0);
+  const [fade, setFade] = useState(true);
   const total = images.length;
 
   useEffect(() => {
     setIndex(0);
+    setFade(true);
   }, [title]);
 
   if (!images || images.length === 0) {
@@ -40,23 +34,34 @@ function Slider({ images, title }) {
     );
   }
 
-  const prev = () => setIndex((i) => (i - 1 + total) % total);
-  const next = () => setIndex((i) => (i + 1) % total);
+  const changeTo = (newIndex) => {
+    setFade(false); // fade out
+    setTimeout(() => {
+      setIndex(newIndex);
+      setFade(true); // fade in
+    }, 150);
+  };
+
+  const prev = () => changeTo((index - 1 + total) % total);
+  const next = () => changeTo((index + 1) % total);
 
   return (
-    <div className="relative h-44 bg-gray-800">
+    <div className="relative h-44 bg-gray-800 overflow-hidden">
       <img
         src={images[index]}
         alt={`${title} screenshot ${index + 1}`}
-        className="w-full h-full object-cover"
+        className={`w-full h-full object-cover transition-opacity duration-300 ease-in-out ${
+          fade ? "opacity-100" : "opacity-0"
+        }`}
         loading="lazy"
+        draggable="false"
       />
 
       {total > 1 && (
         <>
           <button
             onClick={prev}
-            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center transition"
+            className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center transition cursor-pointer"
             aria-label="Previous image"
             type="button"
           >
@@ -65,7 +70,7 @@ function Slider({ images, title }) {
 
           <button
             onClick={next}
-            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center transition"
+            className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white w-9 h-9 rounded-full flex items-center justify-center transition cursor-pointer"
             aria-label="Next image"
             type="button"
           >
@@ -76,8 +81,9 @@ function Slider({ images, title }) {
             {images.map((_, i) => (
               <span
                 key={i}
-                className={`h-2 w-2 rounded-full ${i === index ? "bg-indigo-400" : "bg-white/30"
-                  }`}
+                className={`h-2 w-2 rounded-full ${
+                  i === index ? "bg-indigo-400" : "bg-white/30"
+                }`}
               />
             ))}
           </div>
@@ -91,10 +97,12 @@ function RepoCard({ repo }) {
   const images = projectImages[repo.name] || [];
 
   return (
-    <div className="bg-gray-900/60 border border-white/5 rounded-2xl overflow-hidden shadow-md hover:shadow-indigo-500/20 transition duration-300 transform hover:-translate-y-1">
+    <div className="bg-gray-900/60 border border-white/5 rounded-2xl overflow-hidden shadow-md hover:shadow-indigo-500/20 transition duration-300 transform hover:-translate-y-1 flex flex-col">
+
       <Slider images={images} title={repo.name} />
 
-      <div className="p-6 text-left">
+      <div className="p-6 text-left flex flex-col flex-1">
+
         <h3 className="text-xl font-semibold text-white">{repo.name}</h3>
 
         <p className="text-gray-400 text-sm mt-2 leading-relaxed min-h-[40px]">
@@ -119,7 +127,7 @@ function RepoCard({ repo }) {
           )}
         </div>
 
-        <div className="flex gap-3 mt-6">
+        <div className="flex gap-3 mt-6 mt-auto pt-6">
           <a
             href={repo.html_url}
             target="_blank"
@@ -154,19 +162,13 @@ function Projects() {
     async function load() {
       setLoading(true);
       try {
-        // ✅ fetch ALL repos (up to 100 per page)
         const res = await fetch(
           `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`
         );
         const data = await res.json();
 
-        // filter out forks (optional)
         const clean = Array.isArray(data)
-          ? data.filter(
-            (r) =>
-              !r.fork &&
-              !EXCLUDED_REPOS.includes(r.name)
-          )
+          ? data.filter((r) => !r.fork && !EXCLUDED_REPOS.includes(r.name))
           : [];
 
         setRepos(clean);
@@ -203,7 +205,6 @@ function Projects() {
           </p>
         </div>
 
-        {/* Search */}
         <div className="max-w-md mx-auto mb-10">
           <input
             value={q}

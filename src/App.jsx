@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="font-sans"> 
+    <div className="font-sans">
       <Navbar />
       <Hero />
       <About />
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
- export default App;
+export default App;
