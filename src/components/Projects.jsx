@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import myporto from "../assets/projects/myporto.png";
 import myporto2 from "../assets/projects/myporto2.png";
-import myporto3 from "../assets/projects/myporto3.png";
 
 // ✅ 1) change this
 const GITHUB_USERNAME = "Khalid111a";
@@ -9,7 +8,7 @@ const GITHUB_USERNAME = "Khalid111a";
 // ✅ 2) (optional) add images for some repos only
 // repo name must match GitHub repo "name"
 const projectImages = {
-  "my-portfolio": [myporto, myporto2, myporto3],
+  "my-portfolio": [myporto, myporto2],
   "dotcore-chat": [],
   "echo-contact-relay": [],
 };

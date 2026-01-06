@@ -27,34 +27,28 @@ function Contact() {
           🔗 LinkedIn
         </a>
         <a
-          href="https://github.com/"
+          href="https://github.com/Khalid111a"
           target="_blank"
           rel="noreferrer"
           className="border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white px-5 py-2 rounded-lg transition"
         >
           💻 GitHub
         </a>
+
         <a
-          href="https://www.behance.net/"
-          target="_blank"
-          rel="noreferrer"
-          className="border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white px-5 py-2 rounded-lg transition"
-        >
-          🎨 Behance
-        </a>
-        <a
-          href="https://www.freelancer.com/u/khaledm7060110"
+          href="https://www.freelancer.com/u/KTECH2411"
           target="_blank"
           rel="noreferrer"
           className="border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white px-5 py-2 rounded-lg transition"
         >
           💼 Freelancer
         </a>
+
       </div>
 
       {/* 🔹 Simple Message Form (optional) */}
       <form
-        action="https://formspree.io/f/mqkwzvzd" // استبدل هذا باللينك الخاص بك من formspree.io
+        action="https://formspree.io/f/mwvpjrnv" 
         method="POST"
         className="max-w-xl mx-auto bg-gray-800 p-8 rounded-xl shadow-lg"
       >
